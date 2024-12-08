@@ -1,0 +1,109 @@
+<div class="main">
+  <section class="register">
+    <h2>Регистрация</h2>
+    <form #form="ngForm" (ngSubmit)="register(form)">
+      <label for="name">Name:</label>
+      <input
+        [class]="setNameClass(username)"
+        type="text"
+        id="username"
+        name="username"
+        ngModel
+        #username="ngModel"
+        required
+        minlength="3"
+      />
+      @if (username?.touched) {
+      <div>
+        @if (username?.errors?.['required']) {
+        <p class="error">Моля въведете име!</p>
+        }
+        <!-- -->
+        @if (username?.errors?.['minlength']) {
+        <p class="error">Името е най-малко 3 символа!</p>
+        }
+      </div>
+      }
+
+      <label for="email">Email:</label>
+      <input
+        [class]="setEmailClass(email)"
+        type="email"
+        id="email"
+        name="email"
+        ngModel
+        #email="ngModel"
+        required
+        appEmail
+      />
+      @if (email?.touched) {
+      <div>
+        @if (email?.errors?.['required']) {
+        <p class="error">Моля въведете имейл!</p>
+        }
+        <!-- -->
+        @if (email?.errors?.['emailValidator']) {
+        <p class="error">Невалиден имейл!</p>
+        }
+      </div>
+      }
+
+      <label for="password">Password:</label>
+      <input
+        [class]="setPasswordClass(password)"
+        type="password"
+        id="password"
+        name="password"
+        ngModel
+        #password="ngModel"
+        required
+        minlength="3"
+      />
+      @if (password?.touched) {
+      <div>
+        @if (password?.errors?.['required']) {
+        <p class="error">Моля въведете парола!</p>
+        }
+        <!-- -->
+        @if (password?.errors?.['minlength']) {
+        <p class="error">Паролата е най-малко 3 символа!</p>
+        }
+      </div>
+      }
+
+      <label for="password">Repeat Password:</label>
+      <input
+        [class]="setRePassClass(rePassword)"
+        type="password"
+        id="re-password"
+        name="rePassword"
+        ngModel
+        #rePassword="ngModel"
+        appMatchPassword="password"
+        required
+      />
+      @if (rePassword?.touched) {
+      <div>
+        @if (rePassword?.errors?.['required']) {
+        <p class="error">Моля въведете отново паролата!</p>
+        }
+        <!-- -->
+        @if (rePassword?.errors?.['matchPassword']) {
+        <p class="error">Не съвпада!</p>
+        }
+      </div>
+      }
+      <!-- -->
+      @if (hasError) {
+      <app-error-msg />
+      }
+      <button
+        [disabled]="setButton(form).disabled"
+        [style]="setButton(form).style"
+      >
+        Register
+      </button>
+    </form>
+    <p>Already have an account? <a routerLink="/login">Влез тук</a>.</p>
+  </section>
+</div>

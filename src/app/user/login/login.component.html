@@ -1,0 +1,63 @@
+<div class="main">
+  <section class="login">
+    <h2>Вход</h2>
+    <form #form="ngForm" (ngSubmit)="login(form)">
+      <label for="email">Email:</label>
+      <input
+        [class]="setEmailClass(email)"
+        type="email"
+        id="email"
+        name="email"
+        ngModel
+        #email="ngModel"
+        required
+        appEmail
+      />
+      @if (email?.touched) {
+      <div>
+        @if (email?.errors?.['required']) {
+        <p class="error">Моля въведете имейл!</p>
+        }
+        <!-- -->
+        @if (email?.errors?.['emailValidator']) {
+        <p class="error">Невалиден имейл!</p>
+        }
+      </div>
+      }
+
+      <label for="password">Password:</label>
+      <input
+        [classList]="setPasswordClass(password)"
+        type="password"
+        id="password"
+        name="password"
+        ngModel
+        #password="ngModel"
+        required
+        minlength="3"
+      />
+      @if (password?.touched) {
+      <div>
+        @if (password?.errors?.['required']) {
+        <p class="error">Моля въведете парола!</p>
+        }
+        <!-- -->
+        @if (password?.errors?.['minlength']) {
+        <p class="error">Паролата е най-малко 3 символа!</p>
+        }
+      </div>
+      }
+      <!-- -->
+      @if (hasError) {
+      <app-error-msg />
+      }
+      <button
+        [disabled]="setButton(form).disabled"
+        [style]="setButton(form).style"
+      >
+        Вход
+      </button>
+    </form>
+    <p>Don't have an account? <a routerLink="/register">Регистрация</a>.</p>
+  </section>
+</div>

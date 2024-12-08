@@ -1,0 +1,31 @@
+<div class="main">
+  <section class="home">
+    <h2>Добре дошли!</h2>
+    <p>При нас ще намерите вкусни домашни рецепти.</p>
+    <a routerLink="/catalog" class="btn">към каталога</a>
+  </section>
+  <section class="featured-recipes">
+    <h2>Това са трите най-харесвани рецепти!</h2>
+    @if (hasError) {
+    <app-error-msg />
+    }
+    <!-- -->
+    @else if (isLoading) {
+    <app-loader />
+    }
+    <!-- -->
+    @else {
+    <div class="recipes">
+      @if (recipes.length > 0) { @for (recipe of recipes; track $index) {
+      <app-recipe [recipe]="recipe" />
+      }
+      <!-- -->
+      }
+      <!-- -->
+      @else {
+      <p class="no-post">There are no recipes found yet!</p>
+      }
+    </div>
+    }
+  </section>
+</div>

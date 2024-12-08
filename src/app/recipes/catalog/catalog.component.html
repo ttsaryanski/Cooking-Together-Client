@@ -1,0 +1,37 @@
+<div class="main">
+  <section class="featured-recipes">
+    <h2>Всички рецепти</h2>
+    @if (hasError) {
+    <app-error-msg />
+    }
+    <!-- -->
+    @else if (isLoading) {
+    <app-loader />
+    }
+    <!-- -->
+    @else {
+    <div class="recipes">
+      @if (recipes.length > 0) {
+      <!-- -->
+      @for (recipe of recipes; track $index) {
+      <app-recipe [recipe]="recipe" />
+      }
+      <div class="pagination">
+        <button (click)="previousPage()" [disabled]="currentPage === 1">
+          Предишна
+        </button>
+        <span>Page {{ currentPage }} of {{ totalPages }}</span>
+        <button (click)="nextPage()" [disabled]="currentPage === totalPages">
+          Следваща
+        </button>
+      </div>
+      <!-- -->
+      }
+      <!-- -->
+      @else {
+      <p class="no-post">There are no recipes found yet!</p>
+      }
+    </div>
+    }
+  </section>
+</div>

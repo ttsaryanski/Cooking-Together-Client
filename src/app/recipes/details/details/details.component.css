@@ -1,0 +1,117 @@
+.recipe-detail {
+  background: #f2edc3;
+  padding: 2em;
+  padding-bottom: 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  max-width: 600px;
+  margin: 2em auto;
+  text-align: center;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.recipe-detail:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.recipe-detail img {
+  width: 80%;
+  margin-bottom: 1em;
+  transition: transform 0.3s;
+}
+
+.recipe-detail:hover img {
+  transform: scale(1.05);
+}
+
+.recipe-detail h2 {
+  background-color: #d32f23;
+  color: #f2edc3;
+  padding: 0.5em;
+  font-size: 1.5em;
+  margin-bottom: 1em;
+}
+
+.recipe-detail h3 {
+  color: #d32f23;
+  margin-top: 1em;
+  font-size: 1.2em;
+  font-weight: 700;
+}
+
+.recipe-detail ul,
+.recipe-detail ol {
+  text-align: left;
+  margin: 1em 0;
+  padding: 0 1em;
+  color: #555;
+}
+
+.recipe-detail ul li,
+.recipe-detail ol li {
+  margin-bottom: 0.5em;
+}
+
+.recipe-detail p {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.command {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.command a {
+  background-color: #d32f23;
+  color: #f2edc3;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  display: inline-block;
+  transition: background-color 0.3s, transform 0.3s;
+  font-weight: 700;
+  margin-top: 1em;
+  margin-left: 20px;
+  border-radius: 30px;
+}
+
+.command a:hover {
+  padding: 0.5em 1em;
+  text-decoration: none;
+  display: inline-block;
+  transition: background-color 0.3s, transform 0.3s;
+  font-weight: 700;
+  margin-top: 1em;
+  margin-left: 20px;
+  transform: scale(1.15);
+}
+
+.command p {
+  background-color: #d32f23;
+  color: #f2edc3;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  display: inline-block;
+  transition: background-color 0.3s, transform 0.3s;
+  font-weight: 700;
+  margin-top: 1em;
+  margin-left: 20px;
+}
+
+.clicker {
+  cursor: pointer;
+}
+
+.date {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.date h6 {
+  margin-right: 10px;
+  margin-bottom: 0;
+  color: #d32f23;
+}

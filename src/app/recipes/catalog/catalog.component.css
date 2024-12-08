@@ -1,0 +1,87 @@
+h2 {
+  text-align: center;
+  margin-bottom: 0.5em;
+  font-size: 35px;
+  color: #d32f23;
+  font-weight: 700;
+  text-transform: none;
+  text-shadow: cornflowerblue;
+  font-weight: bold;
+  padding: 30px;
+  margin-top: 30px;
+  border-bottom-style: solid;
+  transition: transform 0.3s, box-shadow 0.3s;
+  text-shadow: 3px 3px 3px rgba(216, 207, 207, 0.932);
+}
+
+.featured-recipes {
+  justify-content: center;
+  align-items: center;
+  height: auto;
+  text-align: center;
+}
+
+.recipes {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+  justify-items: center;
+  gap: 50px;
+  margin: auto;
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-bottom: 100px;
+}
+
+.no-post {
+  font-size: 50px;
+  font-style: italic;
+  margin-top: 50px;
+  border-top: 3px solid #d32f23;
+  padding-top: 30px;
+  color: #d32f23;
+  text-shadow: 3px 3px 3px rgba(216, 207, 207, 0.932);
+  text-align: center;
+}
+
+.pagination {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  width: 100%;
+  margin-top: auto;
+}
+
+.pagination button {
+  background-color: #d32f23;
+  color: #f2edc3;
+  border-radius: 20px;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.pagination button:hover {
+  transform: scale(1.1);
+}
+
+.pagination button:disabled {
+  background-color: grey;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.pagination span {
+  color: #d32f23;
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 10px;
+  text-shadow: 3px 3px 3px rgba(216, 207, 207, 0.932);
+}

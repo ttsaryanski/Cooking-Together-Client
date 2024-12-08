@@ -1,0 +1,134 @@
+.profile {
+  width: 100%;
+  max-width: 500px;
+  margin: 2em auto 1rem;
+  padding: 1em;
+  border: 0.3em solid #d32f23;
+  border-radius: 1em;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #234465;
+  background-color: #f2edc3;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.profile h3 {
+  text-decoration: underline;
+  color: #d32f23;
+  font-size: 1.5em;
+  margin-bottom: 0.5em;
+}
+
+.info {
+  display: info;
+  justify-content: center;
+  gap: 1em;
+  padding: 0.5em;
+}
+
+.info p {
+  width: 100%;
+  text-align: right;
+  margin: 0.5em;
+  font-weight: bold;
+  color: #d32f23;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.date {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.date h4 {
+  width: 100%;
+  margin-right: 10px;
+  margin-bottom: 0;
+  color: #d32f23;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+  margin: auto;
+  padding-bottom: 4.5em;
+}
+
+.sub-container {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.sub-container .container-wrapper {
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 20px;
+}
+
+.sub-container h4 {
+  text-align: center;
+  margin-bottom: 0.5em;
+  font-size: 30px;
+  color: #d32f23;
+  font-weight: 400;
+  text-transform: none;
+  text-shadow: 3px 3px 3px rgba(216, 207, 207, 0.932);
+}
+
+.no-post {
+  font-size: 30px;
+  font-style: italic;
+  margin-top: 50px;
+  border-top: 3px solid #d32f23;
+  padding-top: 30px;
+  color: #d32f23;
+  text-align: center;
+}
+
+.pagination {
+  /* position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 0; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.pagination button {
+  background-color: #d32f23;
+  color: #f2edc3;
+  border-radius: 20px;
+  border: none;
+  padding: 10px 10px;
+  cursor: pointer;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.pagination button:hover {
+  transform: scale(1.1);
+}
+
+.pagination button:disabled {
+  background-color: grey;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.pagination span {
+  color: #d32f23;
+  font-size: 15px;
+  font-weight: bold;
+  margin-top: 10px;
+  text-shadow: 3px 3px 3px rgba(216, 207, 207, 0.932);
+}

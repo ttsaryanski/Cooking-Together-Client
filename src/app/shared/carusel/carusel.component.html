@@ -1,0 +1,11 @@
+<div class="swiper">
+  <div class="swiper-wrapper">
+    @for (item of items; track $index) {
+    <div class="swiper-slide">
+      {{ item }}
+    </div>
+    }
+  </div>
+  <div class="swiper-button-next"></div>
+  <div class="swiper-button-prev"></div>
+</div>

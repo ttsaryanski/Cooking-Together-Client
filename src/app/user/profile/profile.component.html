@@ -1,0 +1,105 @@
+<div class="main">
+  <div class="container">
+    <div class="profile">
+      <h3>Информация за потребител:</h3>
+      @if (hasError) {
+      <app-error-msg />
+      }
+      <!-- -->
+      @else {
+      <div class="info">
+        <p>Име на потребителя: {{ profileDetails.username }}</p>
+      </div>
+      <div class="info">
+        <p>Email: {{ profileDetails.email }}</p>
+      </div>
+      <div class="date">
+        <h4>Вие сте автор на {{ totalRecipesOwner }} рецепти</h4>
+        <h4>Вие сте харесали {{ totalRecipesLiked }} рецепти</h4>
+      </div>
+      }
+    </div>
+    <div class="sub-container">
+      <div class="container-wrapper">
+        <h4>Вашите рецепти:</h4>
+        @if (hasError) {
+        <app-error-msg />
+        }
+        <!-- -->
+        @else if (isLoading) {
+        <app-loader />
+        }
+        <!-- -->
+        @else {
+        <div class="recipes">
+          @if (profileRecipes.length > 0) { @for (recipe of profileRecipes;
+          track $index) {
+          <app-recipe [recipe]="recipe" />
+          }
+          <div class="pagination">
+            <button
+              (click)="previousPageOwner()"
+              [disabled]="currentPageOwner === 1"
+            >
+              Предишна
+            </button>
+            <span>Page {{ currentPageOwner }} of {{ totalPagesOwner }}</span>
+            <button
+              (click)="nextPageOwner()"
+              [disabled]="currentPageOwner === totalPagesOwner"
+            >
+              Следваща
+            </button>
+          </div>
+          <!-- -->
+          }
+          <!-- -->
+          @else {
+          <p class="no-post">There are no recipes found yet!</p>
+          }
+        </div>
+        }
+      </div>
+      <div class="container-wrapper">
+        <h4>Рецепти които сте харесали:</h4>
+        @if (hasError) {
+        <app-error-msg />
+        }
+        <!-- -->
+        @else if (isLoading) {
+        <app-loader />
+        }
+        <!-- -->
+        @else {
+        <div class="recipes">
+          @if (profileLikedRecipes.length > 0) { @for (recipe of
+          profileLikedRecipes; track $index) {
+          <app-recipe [recipe]="recipe" />
+          }
+          <div class="pagination">
+            <button
+              (click)="previousPageLiked()"
+              [disabled]="currentPageLiked === 1"
+            >
+              Предишна
+            </button>
+            <span>Page {{ currentPageLiked }} of {{ totalPagesLiked }}</span>
+            <button
+              (click)="nextPageLiked()"
+              [disabled]="currentPageLiked === totalPagesLiked"
+            >
+              Следваща
+            </button>
+          </div>
+          <!-- -->
+          }
+          <!-- -->
+          @else {
+          <p class="no-post">There are no recipes found yet!</p>
+          }
+        </div>
+        }
+      </div>
+    </div>
+  </div>
+</div>

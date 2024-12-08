@@ -1,0 +1,134 @@
+<div class="main">
+  @if (isLoading) {
+  <app-loader />
+  }@else {
+  <section class="edit">
+    <h2>Редактирай</h2>
+    <img src="{{ recipe?.imageUrl }}" alt="{{ recipe?.title }}" />
+    <form #form="ngForm" (ngSubmit)="editRecipe(form)">
+      <label for="title">Заглавие:</label>
+      <input
+        [class]="setClass(title)"
+        type="text"
+        id="title"
+        name="title"
+        [(ngModel)]="recipe!.title"
+        #title="ngModel"
+        required
+        minlength="5"
+      />
+      @if (title?.touched) {
+      <div>
+        @if (title?.errors?.['required']) {
+        <p class="error">Заглавието е задължително!</p>
+        }
+        <!-- -->
+        @if (title?.errors?.['minlength']) {
+        <p class="error">Заглавието трябва да е не по-малко от 5 символа!</p>
+        }
+      </div>
+      }
+
+      <label for="description">Описание:</label>
+      <textarea
+        [class]="setClass(description)"
+        id="description"
+        name="description"
+        [(ngModel)]="recipe!.description"
+        #description="ngModel"
+        required
+        minlength="10"
+      ></textarea>
+      @if (description?.touched) {
+      <div>
+        @if (description?.errors?.['required']) {
+        <p class="error">Описанието е задължително!</p>
+        }
+        <!-- -->
+        @if (description?.errors?.['minlength']) {
+        <p class="error">Описанието трябва да е не по-малко от 10 символа!</p>
+        }
+      </div>
+      }
+
+      <label for="ingredients">Необходими продукти:</label>
+      <textarea
+        [class]="setClass(ingredients)"
+        id="ingredients"
+        name="ingredients"
+        [(ngModel)]="recipe!.ingredients"
+        #ingredients="ngModel"
+        required
+        minlength="10"
+      ></textarea>
+      @if (ingredients?.touched) {
+      <div>
+        @if (ingredients?.errors?.['required']) {
+        <p class="error">Моля добавете необходимите продукти!</p>
+        }
+        <!-- -->
+        @if (ingredients?.errors?.['minlength']) {
+        <p class="error">Най-малко 10 символа!</p>
+        }
+      </div>
+      }
+
+      <label for="instructions">Как да приготвим:</label>
+      <textarea
+        [class]="setClass(instructions)"
+        id="instructions"
+        name="instructions"
+        [(ngModel)]="recipe!.instructions"
+        #instructions="ngModel"
+        required
+        minlength="10"
+      ></textarea>
+      @if (instructions?.touched) {
+      <div>
+        @if (instructions?.errors?.['required']) {
+        <p class="error">Опишете начина на приготвяне!</p>
+        }
+        <!-- -->
+        @if (instructions?.errors?.['minlength']) {
+        <p class="error">Най-малко 10 символа!</p>
+        }
+      </div>
+      }
+
+      <label for="imageUrl">Изображение:</label>
+      <input
+        [classList]="setImgClass(imageUrl)"
+        type="url"
+        id="imageUrl"
+        name="imageUrl"
+        [(ngModel)]="recipe!.imageUrl"
+        #imageUrl="ngModel"
+        required
+        appImageUrl
+      />
+      @if (imageUrl?.touched) {
+      <div>
+        @if (imageUrl?.errors?.['required']) {
+        <p class="error">Изображението е задължително!</p>
+        }
+        <!-- -->
+        @if (imageUrl?.errors?.['imageUrlValidator']) {
+        <p class="error">Невалиден URL адрес!</p>
+        }
+      </div>
+      }
+      <!-- -->
+      @if (hasError) {
+      <app-error-msg />
+      }
+
+      <button
+        [disabled]="setButton(form).disabled"
+        [style]="setButton(form).style"
+      >
+        Запази промените
+      </button>
+    </form>
+  </section>
+  }
+</div>

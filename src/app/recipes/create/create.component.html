@@ -1,0 +1,133 @@
+<div class="main">
+  <section class="create">
+    <h2>Създай своята рецепта</h2>
+    <form #form="ngForm" (ngSubmit)="create(form)">
+      <label for="title">Заглавие:</label>
+      <input
+        [class]="setClass(title)"
+        type="text"
+        id="title"
+        name="title"
+        placeholder="Вкусни ребърца с ..."
+        ngModel
+        #title="ngModel"
+        required
+        minlength="5"
+      />
+      @if (title?.touched) {
+      <div>
+        @if (title?.errors?.['required']) {
+        <p class="error">Заглавието е задължително!</p>
+        }
+        <!-- -->
+        @if (title?.errors?.['minlength']) {
+        <p class="error">Заглавието трябва да е не по-малко от 5 символа!</p>
+        }
+      </div>
+      }
+
+      <label for="description">Описание:</label>
+      <textarea
+        [class]="setClass(description)"
+        id="description"
+        name="description"
+        placeholder="Ребърца на фурна с ..."
+        ngModel
+        #description="ngModel"
+        required
+        minlength="10"
+      ></textarea>
+      @if (description?.touched) {
+      <div>
+        @if (description?.errors?.['required']) {
+        <p class="error">Описанието е задължително!</p>
+        }
+        <!-- -->
+        @if (description?.errors?.['minlength']) {
+        <p class="error">Описанието трябва да е не по-малко от 10 символа!</p>
+        }
+      </div>
+      }
+
+      <label for="ingredients">Необходими продукти:</label>
+      <textarea
+        [class]="setClass(ingredients)"
+        id="ingredients"
+        name="ingredients"
+        placeholder="500гр. ..."
+        ngModel
+        #ingredients="ngModel"
+        required
+        minlength="10"
+      ></textarea>
+      @if (ingredients?.touched) {
+      <div>
+        @if (ingredients?.errors?.['required']) {
+        <p class="error">Моля добавете необходимите продукти!</p>
+        }
+        <!-- -->
+        @if (ingredients?.errors?.['minlength']) {
+        <p class="error">Най-малко 10 символа!</p>
+        }
+      </div>
+      }
+
+      <label for="instructions">Как да приготвим:</label>
+      <textarea
+        [class]="setClass(instructions)"
+        id="instructions"
+        name="instructions"
+        placeholder="Първо ..."
+        ngModel
+        #instructions="ngModel"
+        required
+        minlength="10"
+      ></textarea>
+      @if (instructions?.touched) {
+      <div>
+        @if (instructions?.errors?.['required']) {
+        <p class="error">Опишете начина на приготвяне!</p>
+        }
+        <!-- -->
+        @if (instructions?.errors?.['minlength']) {
+        <p class="error">Най-малко 10 символа!</p>
+        }
+      </div>
+      }
+
+      <label for="imageUrl">Изображение:</label>
+      <input
+        [classList]="setImgClass(imageUrl)"
+        type="url"
+        id="imageUrl"
+        name="imageUrl"
+        placeholder="https://...."
+        ngModel
+        #imageUrl="ngModel"
+        required
+        appImageUrl
+      />
+      @if (imageUrl?.touched) {
+      <div>
+        @if (imageUrl?.errors?.['required']) {
+        <p class="error">Изображението е задължително!</p>
+        }
+        <!-- -->
+        @if (imageUrl?.errors?.['imageUrlValidator']) {
+        <p class="error">Невалиден URL адрес!</p>
+        }
+      </div>
+      }
+      <!--  -->
+      @if (hasError) {
+      <app-error-msg />
+      }
+      <button
+        [disabled]="setButton(form).disabled"
+        [style]="setButton(form).style"
+      >
+        Създай
+      </button>
+    </form>
+  </section>
+</div>

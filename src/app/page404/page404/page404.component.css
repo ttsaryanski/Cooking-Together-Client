@@ -1,0 +1,45 @@
+.error-page {
+  text-align: center;
+  background-color: #f2edc3;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: 4em auto;
+}
+
+.error-page h2 {
+  font-size: 5em;
+  color: #d32f23;
+  font-weight: 700;
+}
+
+.error-page p {
+  font-size: 1.5em;
+  margin-bottom: 1.5em;
+  padding-left: 20px;
+  padding-right: 20px;
+  color: #d32f23;
+}
+
+.btn {
+  display: inline-block;
+  background-color: #d32f23;
+  color: #f2edc3;
+  padding: 0.75em 1.5em;
+  text-decoration: none;
+  font-weight: 400;
+  transition: background-color 0.3s, transform 0.3s;
+  border-radius: 30px;
+  text-transform: uppercase;
+  margin-bottom: 2em;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+}
+
+.error-page img {
+  width: 30%;
+  height: 30%;
+  object-fit: cover;
+  transition: transform 0.3s;
+}

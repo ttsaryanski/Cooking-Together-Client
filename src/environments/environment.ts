@@ -1,1 +1,1 @@
-export const environment = { apiUrl: 'http://localhost:3000/api' };
+export const environment = { apiUrl: 'https://test-restapi.onrender.com/api' };

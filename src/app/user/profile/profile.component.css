@@ -132,3 +132,9 @@
   margin-top: 10px;
   text-shadow: 3px 3px 3px rgba(216, 207, 207, 0.932);
 }
+
+img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+}

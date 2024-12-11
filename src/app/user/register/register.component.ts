@@ -31,6 +31,8 @@ import { ErrorMsgComponent } from '../../core/error-msg/error-msg.component';
 })
 export class RegisterComponent {
   hasError: boolean = false;
+  selectedFile: File | null = null;
+  allowedExtensions: string[] = ['jpg', 'jpeg', 'png'];
 
   constructor(
     private userService: UserService,
@@ -48,9 +50,16 @@ export class RegisterComponent {
     }
 
     const { username, email, password, rePassword } = form.value;
+    const file = this.selectedFile;
+
+    if (file && !this.isValidFileType(file)) {
+      this.hasError = true;
+      alert('Invalid file type. Only jpg, jpeg, and png files are allowed.');
+      return;
+    }
 
     this.userService
-      .register(username!, email!, password!, rePassword!)
+      .register(username!, email!, password!, rePassword!, file)
       .subscribe({
         next: () => {
           this.hasError = false;
@@ -62,6 +71,15 @@ export class RegisterComponent {
           this.hasError = true;
         },
       });
+  }
+
+  onFileSelected(event: any) {
+    this.selectedFile = event.target.files[0];
+  }
+
+  isValidFileType(file: File): boolean {
+    const fileExtension = file.name.split('.').pop()?.toLowerCase();
+    return this.allowedExtensions.includes(fileExtension || '');
   }
 
   setNameClass(form: NgModel | null) {

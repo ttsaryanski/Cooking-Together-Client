@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Recipe } from '../../types/recipe';
-import { ProfileDetails } from '../../types/user';
+import { ProfileDetails, UserPic } from '../../types/user';
 
 import { UserService } from '../user.service';
 import { ErrorMsgService } from '../../core/error-msg/error-msg.service';
@@ -26,7 +26,10 @@ export class ProfileComponent implements OnInit {
   profileDetails: ProfileDetails = {
     username: '',
     email: '',
+    profilePicture: { fileName: '', fileUrl: '' },
   };
+
+  userPicture!: UserPic;
 
   currentPageOwner: number = 1;
   pageSizeOwner: number = 5;
@@ -54,11 +57,16 @@ export class ProfileComponent implements OnInit {
         if (user) {
           this.hasError = false;
           this.errorMsgService.clearError();
-          const { _id, username, email, password } = user!;
-          this.profileDetails = { username, email };
-
+          const { _id, username, email, password, profilePicture } = user!;
+          this.profileDetails = {
+            username,
+            email,
+            profilePicture: profilePicture || { fileName: '', fileUrl: '' },
+          };
+          this.userPicture = this.profileDetails.profilePicture;
           this.userRecipes();
           this.likedRecipes();
+          console.log(this.userPicture.fileUrl);
         }
       },
       error: () => {

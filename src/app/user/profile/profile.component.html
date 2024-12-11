@@ -2,7 +2,9 @@
   <div class="container">
     <div class="profile">
       <h3>Информация за потребител:</h3>
-      @if (hasError) {
+      @if (userPicture.fileUrl) {
+      <img [src]="userPicture.fileUrl" alt="" />
+      } @if (hasError) {
       <app-error-msg />
       }
       <!-- -->

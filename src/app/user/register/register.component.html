@@ -97,6 +97,13 @@
       @if (hasError) {
       <app-error-msg />
       }
+      <div>
+        <label for="file"
+          >Профилна снимка - по желание! - Само jpg, jpeg, и png файлове са
+          разрешени!</label
+        >
+        <input type="file" (change)="onFileSelected($event)" />
+      </div>
       <button
         [disabled]="setButton(form).disabled"
         [style]="setButton(form).style"

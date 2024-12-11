@@ -6,7 +6,7 @@
       class="responsive-image"
     />
   </div>
-  <h3>{{ recipe.title | slice : 25 }}</h3>
+  <h3>{{ recipe.title | slice : 20 }}</h3>
   <p>{{ recipe.description | slice : 25 }}</p>
   <a routerLink="/{{ recipe._id }}/details">Прочети повече</a>
 </article>

@@ -42,21 +42,23 @@ export class UserService {
     username: string,
     email: string,
     password: string,
-    rePassword: string
+    rePassword: string,
+    file: File | null
   ) {
-    return this.http
-      .post<UserForAuth>('/api/auth/register', {
-        username,
-        email,
-        password,
-        rePassword,
+    const formData = new FormData();
+    formData.append('username', username);
+    formData.append('email', email);
+    formData.append('password', password);
+    formData.append('rePassword', rePassword);
+    if (file) {
+      formData.append('profilePicture', file);
+    }
+    return this.http.post<UserForAuth>('/api/auth/register', formData).pipe(
+      tap((user) => {
+        this.user$$.next(user);
+        this.isLogged$$.next(!!user);
       })
-      .pipe(
-        tap((user) => {
-          this.user$$.next(user);
-          this.isLogged$$.next(!!user);
-        })
-      );
+    );
   }
 
   logout() {

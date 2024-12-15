@@ -4,7 +4,9 @@
       <h3>Информация за потребител:</h3>
       @if (userPicture.fileUrl) {
       <img [src]="userPicture.fileUrl" alt="" />
-      } @if (hasError) {
+      } @else {<img src="profile.png" />}
+      <!-- -->
+      @if (hasError) {
       <app-error-msg />
       }
       <!-- -->

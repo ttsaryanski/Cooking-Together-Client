@@ -25,7 +25,10 @@ export const appInterceptor: HttpInterceptorFn = (req, next) => {
     catchError((err) => {
       if (err.status === 401 && err.error?.message === 'Invalid token!') {
         //router.navigate(['/home']);
-      } else {
+      } else if (err.status === 404) {
+errorMsgService.setError(err);
+router.navigate(['/404']);
+     }else {
         errorMsgService.setError(err);
         // router.navigate(['/error']);
       }

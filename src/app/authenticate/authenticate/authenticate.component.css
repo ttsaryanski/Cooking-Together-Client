@@ -1,0 +1,11 @@
+h2 {
+  text-align: center;
+  font-size: 55px;
+  color: #d32f23;
+  font-weight: 700;
+  text-transform: none;
+
+  text-shadow: 3px 3px 3px rgba(216, 207, 207, 0.932);
+  font-weight: bold;
+  padding: 20px;
+}

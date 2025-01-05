@@ -27,7 +27,7 @@ export const appInterceptor: HttpInterceptorFn = (req, next) => {
         //router.navigate(['/home']);
       } else if (
         err.status === 404 &&
-        err.error?.message === 'Not item whit this id'
+        err.error?.message === 'There is no item with this id.'
       ) {
         errorMsgService.setError(err);
         router.navigate(['/404']);

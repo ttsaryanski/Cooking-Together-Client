@@ -17,12 +17,11 @@ textarea {
 }
 
 body {
-  height: 100%;
-  font-family: "Oswald", sans-serif;
+  height: 100dvh;
+  font: 14px/1.5 "Oswald", sans-serif;
   line-height: 1.6;
   color: #333;
   background-color: #f2edc3;
-  padding-bottom: 100px;
 }
 
 body::before {
@@ -42,25 +41,30 @@ body::before {
 }
 
 .main {
-  width: 100%;
-  margin-bottom: 50px;
-  background-color: transparent !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10em 0;
 }
 
-@keyframes cssAnimation {
-  to {
-    width: 0;
-    height: 0;
-    overflow: hidden;
-    padding: 0;
+@media (max-width: 1200px) {
+  body {
+    font-size: 12px;
+    line-height: 1.4;
   }
 }
 
-@-webkit-keyframes cssAnimation {
-  to {
-    width: 0;
-    height: 0;
-    visibility: hidden;
-    padding: 0;
+@media (max-width: 1000px) {
+  body {
+    font-size: 10px;
+    line-height: 1.2;
+  }
+}
+
+@media (max-width: 800px) {
+  body {
+    font-size: 8px;
+    line-height: 1;
   }
 }

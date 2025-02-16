@@ -28,7 +28,6 @@ export class ProfileComponent implements OnInit {
     email: '',
     profilePicture: { fileName: '', fileUrl: '' },
   };
-
   userPicture!: UserPic;
 
   currentPageOwner: number = 1;
@@ -64,9 +63,9 @@ export class ProfileComponent implements OnInit {
             profilePicture: profilePicture || { fileName: '', fileUrl: '' },
           };
           this.userPicture = this.profileDetails.profilePicture;
+
           this.userRecipes();
           this.likedRecipes();
-          console.log(this.userPicture.fileUrl);
         }
       },
       error: () => {

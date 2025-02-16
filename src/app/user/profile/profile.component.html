@@ -3,8 +3,10 @@
     <div class="profile">
       <h3>Информация за потребител:</h3>
       @if (userPicture.fileUrl) {
-      <img [src]="userPicture.fileUrl" alt="" />
-      } @else {<img src="profile.png" />}
+      <img [src]="userPicture.fileUrl" alt="{{ profileDetails.username }}" />
+      }@else {
+      <img src="profile.png" />
+      }
       <!-- -->
       @if (hasError) {
       <app-error-msg />

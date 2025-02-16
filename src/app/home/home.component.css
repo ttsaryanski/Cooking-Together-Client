@@ -1,10 +1,10 @@
 .home {
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 2em;
 }
 
 .home p {
-  font-size: 30px;
+  font-size: 4em;
   color: #d32f23;
   font-style: italic;
   text-shadow: 3px 3px 3px rgba(216, 207, 207, 0.932);
@@ -19,25 +19,26 @@
 }
 
 .home .btn {
+  font-size: 1.2em;
   background-color: #d32f23;
   color: #f2edc3;
-  padding: 0.5em 1em;
-  text-decoration: none;
-  display: inline-block;
+  padding: 0.8em 1.5em;
   transition: background-color 0.3s, transform 0.3s;
   font-weight: 400;
-  margin-top: 1em;
+  line-height: 0.9;
+  margin-top: 2em;
   border-radius: 30px;
   text-transform: uppercase;
+  border: none;
 }
 
-.home a:hover {
+.home .btn:hover {
   transform: scale(1.1);
 }
 
 h2 {
   text-align: center;
-  font-size: 55px;
+  font-size: 8em;
   color: #d32f23;
   font-weight: 700;
   text-transform: none;
@@ -47,27 +48,17 @@ h2 {
   padding: 20px;
 }
 
-h3 {
-  text-align: center;
-  margin-bottom: 0.5em;
-  font-size: 35px;
-  color: #d32f23;
-  font-weight: 400;
-  text-transform: none;
-}
-
 .featured-recipes h2 {
-  font-size: 35px;
+  font-size: 3em;
 }
 
 .recipes {
   display: flex;
-  justify-content: space-between;
-  align-items: stretch;
-  gap: 20px;
+  justify-content: space-evenly;
   flex-wrap: wrap;
-  margin-left: 150px;
-  margin-right: 150px;
+  gap: 4em;
+  flex-wrap: wrap;
+  padding: 0 2em 5em;
 }
 
 .no-post {

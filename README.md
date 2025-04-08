@@ -1,27 +1,93 @@
-# App
+# Cooking Together – [Go to the App](https://test-client-hgl0.onrender.com)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.11.
+## Project Overview
 
-## Development server
+This is a Single Page Application (SPA) designed to collect and share cooking recipes with users. The project includes both a public and a private section, fulfilling the specified requirements. The application demonstrates dynamic functionality, interaction with a REST API, and the use of core Angular concepts and technologies.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+---
 
-## Code scaffolding
+## Features and Functionality
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Public Section
 
-## Build
+The public section is accessible to all users and includes:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+-   **Home Page**: A welcome message for visitors and a showcase of the three most liked recipes.
+-   **Catalog**: A list of all available recipes for browsing.
+-   **Search**: Allows searching by keyword or partial match.
+-   **Details**: Detailed information about a specific recipe.
+-   **Authentication Forms**: Registration and login forms to access the private section with more features.
 
-## Running unit tests
+### Private Section
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+The private section is available only to registered and logged-in users, offering:
 
-## Running end-to-end tests
+-   **Recipe Management**: Create, edit, and delete your own recipes.
+-   **Interaction**: Ability to like other users’ recipes (but not your own).
+-   **User Profile**: Displays a list of recipes added and liked by the user.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+---
 
-## Further help
+## Technologies and Concepts
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+### Core Technologies
+
+-   **Angular**: The main client-side framework.
+-   **REST API**: For communication with a remote server.
+-   **TypeScript**: Strong typing and use of interfaces.
+-   **RxJS**: Reactive programming with observables and operators.
+-   **CSS**: Styling and visual presentation.
+
+### Key Angular Concepts
+
+-   **Routing**: Client-side navigation across different pages.
+-   **Interfaces**: More than two interfaces defined for typing.
+-   **Lifecycle Hooks**: Used for managing component behavior.
+-   **RxJS Operators**: More than two operators used for data manipulation.
+-   **Pipes**: Used to format data in templates.
+-   **Route Guards**: To protect public and private areas.
+
+### Functionality
+
+-   **CRUD Operations**: Full support for creating, reading, updating, and deleting recipes.
+-   **Form Validation**: Client-side validation to prevent invalid data.
+-   **Error Handling**: Managing errors during API communication.
+-   **Auto Sign-in Persistence**: Users remain logged in after page reload.
+
+---
+
+## Folder Structure
+
+The application is organized in a well-structured way to ease maintenance and future scalability:
+
+-   `/src/app` – Main Angular app folder
+
+    -   `/authenticate` – Module for authentication
+    -   `/core` – Core components: header, footer, and error display
+    -   `/directives` – Custom directives for additional logic
+    -   `/home` – Components for the home page
+    -   `/interceptors` – HTTP interceptors for request/response handling
+    -   `/page404` – "404 - Not Found" page components
+    -   `/recipes` – Recipe-related functionality
+        -   `/catalog` – Browse all available recipes
+        -   `/create` – Create new recipes
+        -   `/details` – Recipe detail view
+        -   `/edit` – Edit recipes
+        -   `/recipe` – Core logic for an individual recipe
+        -   `/search` – Recipe search functionality
+        -   `recipes.service.ts` – Service for handling recipe data
+    -   `/shared` – Shared modules and components
+    -   `/types` – TypeScript types and interfaces
+    -   `/user` – User-related modules
+        -   `/login` – Login component
+        -   `/profile` – User profile management
+        -   `/register` – Registration component
+        -   `user.service.ts` – Service for user data management
+    -   `/utils` – Utility functions like `setClasses.ts`
+
+-   `app.component.*` – Main application component
+-   `app.routes.ts` – Application routing definitions
+-   `environments/` – Environment-specific configurations
+-   `index.html` – Main HTML entry point
+-   `main.ts` – Entry point for Angular app
+-   `styles.css` – Global styles

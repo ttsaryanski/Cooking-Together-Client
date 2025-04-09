@@ -1,4 +1,4 @@
-# Cooking Together – [Go to the App](https://test-client-hgl0.onrender.com)
+# Cooking Together – [Go to the App](https://cooking-together-782b1.web.app)
 
 ## Project Overview
 

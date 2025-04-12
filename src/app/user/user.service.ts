@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { BehaviorSubject, tap } from "rxjs";
+import { BehaviorSubject, catchError, of, tap } from "rxjs";
 
 import { UserForAuth } from "../types/user";
 
@@ -13,6 +13,9 @@ export class UserService {
 
     private isLogged$$ = new BehaviorSubject<boolean>(false);
     isLogged$ = this.isLogged$$.asObservable();
+
+    private isLoading$$ = new BehaviorSubject<boolean>(true);
+    public isLoading$ = this.isLoading$$.asObservable();
 
     user: UserForAuth | null = null;
 
@@ -34,6 +37,13 @@ export class UserService {
                 tap((user) => {
                     this.user$$.next(user);
                     this.isLogged$$.next(!!user);
+                    this.isLoading$$.next(false);
+                }),
+                catchError((err) => {
+                    this.user$$.next(null);
+                    this.isLogged$$.next(false);
+                    this.isLoading$$.next(false);
+                    return of(null);
                 })
             );
     }
@@ -59,6 +69,13 @@ export class UserService {
                 tap((user) => {
                     this.user$$.next(user);
                     this.isLogged$$.next(!!user);
+                    this.isLoading$$.next(false);
+                }),
+                catchError((err) => {
+                    this.user$$.next(null);
+                    this.isLogged$$.next(false);
+                    this.isLoading$$.next(false);
+                    return of(null);
                 })
             );
     }
@@ -68,6 +85,10 @@ export class UserService {
             tap(() => {
                 this.user$$.next(null);
                 this.isLogged$$.next(false);
+            }),
+            catchError((err) => {
+                this.isLoading$$.next(false);
+                return of(null);
             })
         );
     }
@@ -77,6 +98,13 @@ export class UserService {
             tap((user) => {
                 this.user$$.next(user);
                 this.isLogged$$.next(!!user);
+                this.isLoading$$.next(false);
+            }),
+            catchError((err) => {
+                this.user$$.next(null);
+                this.isLogged$$.next(false);
+                this.isLoading$$.next(false);
+                return of(null);
             })
         );
     }

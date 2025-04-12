@@ -1,24 +1,31 @@
-import { inject } from '@angular/core';
+import { inject } from "@angular/core";
+import { combineLatest, filter, map, Observable, take } from "rxjs";
 import {
-  ActivatedRouteSnapshot,
-  CanActivateChildFn,
-  Router,
-  RouterStateSnapshot,
-} from '@angular/router';
+    ActivatedRouteSnapshot,
+    CanActivateChildFn,
+    Router,
+    RouterStateSnapshot,
+} from "@angular/router";
 
-import { UserService } from '../user/user.service';
+import { UserService } from "../user/user.service";
 
 export const isAuthenticated: CanActivateChildFn = (
-  route: ActivatedRouteSnapshot,
-  state: RouterStateSnapshot
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot
 ) => {
-  const userService = inject(UserService);
-  const router = inject(Router);
+    const userService = inject(UserService);
+    const router = inject(Router);
 
-  if (userService.isLogged) {
-    return true;
-  }
-
-  router.navigate(['/login']);
-  return false;
+    return combineLatest([userService.isLoading$, userService.user$]).pipe(
+        filter(([isLoading, _]) => !isLoading),
+        take(1),
+        map(([_, user]) => {
+            if (user) {
+                return true;
+            } else {
+                router.navigate(["/login"]);
+                return false;
+            }
+        })
+    );
 };

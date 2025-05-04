@@ -43,7 +43,7 @@ export class UserService {
                     this.user$$.next(null);
                     this.isLogged$$.next(false);
                     this.isLoading$$.next(false);
-                    return of(null);
+                    throw err;
                 })
             );
     }
@@ -75,7 +75,7 @@ export class UserService {
                     this.user$$.next(null);
                     this.isLogged$$.next(false);
                     this.isLoading$$.next(false);
-                    return of(null);
+                    throw err;
                 })
             );
     }
@@ -88,7 +88,7 @@ export class UserService {
             }),
             catchError((err) => {
                 this.isLoading$$.next(false);
-                return of(null);
+                throw err;
             })
         );
     }
@@ -104,7 +104,7 @@ export class UserService {
                 this.user$$.next(null);
                 this.isLogged$$.next(false);
                 this.isLoading$$.next(false);
-                return of(null);
+                throw err;
             })
         );
     }

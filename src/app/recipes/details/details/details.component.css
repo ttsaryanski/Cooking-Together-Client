@@ -115,3 +115,10 @@
   margin-bottom: 0;
   color: #d32f23;
 }
+
+@media (max-width: 600px) {
+  .recipe-detail {
+    margin: 2em;
+    width: 80%;
+  }
+}

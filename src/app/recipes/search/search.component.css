@@ -129,3 +129,10 @@ h2 {
   margin-top: 10px;
   text-shadow: 3px 3px 3px rgba(216, 207, 207, 0.932);
 }
+
+@media (max-width: 600px) {
+  h2 {
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+}

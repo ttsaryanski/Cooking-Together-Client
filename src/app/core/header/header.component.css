@@ -75,3 +75,31 @@ nav ul li a:hover {
 .clicker {
   cursor: pointer;
 }
+
+@media (max-width: 600px) {
+  header{
+    font-size: 7px;
+  }
+  
+  .logo {
+    margin: 0 0.5em;
+  }
+
+  .nav {
+    margin: 0 2em;
+  }
+
+  nav ul,
+  .nav {
+    flex-direction: column;
+  }
+
+  .nav {
+    align-items: flex-start;
+  }
+
+  nav ul>li a,
+  .nav>li a {
+    float: left;
+  }
+}

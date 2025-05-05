@@ -70,3 +70,10 @@ h2 {
   color: #d32f23;
   text-align: center;
 }
+
+@media (max-width: 600px) {
+  .home p {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}

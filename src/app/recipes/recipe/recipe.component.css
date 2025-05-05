@@ -66,3 +66,9 @@
 .recipe a:hover {
   transform: scale(1.15);
 }
+
+@media (max-width: 600px) {
+  .recipe {
+    width: initial;
+  }
+}

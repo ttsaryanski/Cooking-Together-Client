@@ -24,7 +24,7 @@ export class RecipesService {
     }
 
     getRecipe(limit?: number, query?: string) {
-        let url = `/api/item`;
+        let url = `/api/recipes`;
         const params: string[] = [];
 
         if (limit) {
@@ -57,23 +57,23 @@ export class RecipesService {
             imageUrl,
         };
 
-        return this.http.post<Recipe>(`/api/item`, payload);
+        return this.http.post<Recipe>(`/api/recipes`, payload);
     }
 
     getRecipeById(id: string) {
-        return this.http.get<Recipe>(`/api/item/${id}`);
+        return this.http.get<Recipe>(`/api/recipes/${id}`);
     }
 
     editRecipe(id: string, data: Partial<Recipe>) {
-        return this.http.put<Recipe>(`/api/item/${id}`, data);
+        return this.http.put<Recipe>(`/api/recipes/${id}`, data);
     }
 
     removeRecipe(id: string) {
-        return this.http.delete(`/api/item/${id}`);
+        return this.http.delete(`/api/recipes/${id}`);
     }
 
     likeRecipe(recipeId: string) {
-        return this.http.post(`/api/item/${recipeId}/like`, {}).pipe(
+        return this.http.post(`/api/recipes/${recipeId}/like`, {}).pipe(
             tap(() => {
                 this.likeUpdated$$.next(true);
             })
@@ -81,7 +81,7 @@ export class RecipesService {
     }
 
     getTopThreeRecipe() {
-        return this.http.get<Recipe[]>("/api/item/top-three");
+        return this.http.get<Recipe[]>("/api/recipes/top-three");
     }
 
     getProfileRecipe(page: number, limit: number) {
@@ -89,7 +89,7 @@ export class RecipesService {
             items: Recipe[];
             totalCount: number;
             totalPages: number;
-        }>("/api/item/profileItem", { params: { page, limit } });
+        }>("/api/recipes/profileItem", { params: { page, limit } });
     }
 
     getProfileLikedRecipe(page: number, limit: number) {
@@ -97,7 +97,7 @@ export class RecipesService {
             items: Recipe[];
             totalCount: number;
             totalPages: number;
-        }>("/api/item/profileLiked", { params: { page, limit } });
+        }>("/api/recipes/profileLiked", { params: { page, limit } });
     }
 
     getAllToPaginated(page: number, limit: number) {
@@ -105,6 +105,6 @@ export class RecipesService {
             items: Recipe[];
             totalCount: number;
             totalPages: number;
-        }>("/api/item/paginated", { params: { page, limit } });
+        }>("/api/recipes/paginated", { params: { page, limit } });
     }
 }

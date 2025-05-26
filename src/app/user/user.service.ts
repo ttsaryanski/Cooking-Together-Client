@@ -32,7 +32,10 @@ export class UserService {
 
     login(email: string, password: string) {
         return this.http
-            .post<UserForAuth>("/api/authAngular/login", { email, password })
+            .post<UserForAuth>("/api/cooking/authAngular/login", {
+                email,
+                password,
+            })
             .pipe(
                 tap((user) => {
                     this.user$$.next(user);
@@ -64,7 +67,7 @@ export class UserService {
             formData.append("profilePicture", file);
         }
         return this.http
-            .post<UserForAuth>("/api/authAngular/register", formData)
+            .post<UserForAuth>("/api/cooking/authAngular/register", formData)
             .pipe(
                 tap((user) => {
                     this.user$$.next(user);
@@ -81,7 +84,7 @@ export class UserService {
     }
 
     logout() {
-        return this.http.post("/api/authAngular/logout", {}).pipe(
+        return this.http.post("/api/cooking/authAngular/logout", {}).pipe(
             tap(() => {
                 this.user$$.next(null);
                 this.isLogged$$.next(false);
@@ -94,18 +97,20 @@ export class UserService {
     }
 
     getProfile() {
-        return this.http.get<UserForAuth>("/api/authAngular/profile").pipe(
-            tap((user) => {
-                this.user$$.next(user);
-                this.isLogged$$.next(!!user);
-                this.isLoading$$.next(false);
-            }),
-            catchError((err) => {
-                this.user$$.next(null);
-                this.isLogged$$.next(false);
-                this.isLoading$$.next(false);
-                throw err;
-            })
-        );
+        return this.http
+            .get<UserForAuth>("/api/cooking/authAngular/profile")
+            .pipe(
+                tap((user) => {
+                    this.user$$.next(user);
+                    this.isLogged$$.next(!!user);
+                    this.isLoading$$.next(false);
+                }),
+                catchError((err) => {
+                    this.user$$.next(null);
+                    this.isLogged$$.next(false);
+                    this.isLoading$$.next(false);
+                    throw err;
+                })
+            );
     }
 }

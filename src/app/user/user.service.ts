@@ -32,15 +32,13 @@ export class UserService {
 
     login(email: string, password: string) {
         return this.http
-            .post<UserForAuth>("/api/cooking/authAngular/login", {
+            .post<void>("/api/cooking/authAngular/login", {
                 email,
                 password,
             })
             .pipe(
-                tap((user) => {
-                    this.user$$.next(user);
-                    this.isLogged$$.next(!!user);
-                    this.isLoading$$.next(false);
+                tap(() => {
+                    this.getProfile().subscribe();
                 }),
                 catchError((err) => {
                     this.user$$.next(null);
@@ -67,12 +65,10 @@ export class UserService {
             formData.append("profilePicture", file);
         }
         return this.http
-            .post<UserForAuth>("/api/cooking/authAngular/register", formData)
+            .post<void>("/api/cooking/authAngular/register", formData)
             .pipe(
-                tap((user) => {
-                    this.user$$.next(user);
-                    this.isLogged$$.next(!!user);
-                    this.isLoading$$.next(false);
+                tap(() => {
+                    this.getProfile().subscribe();
                 }),
                 catchError((err) => {
                     this.user$$.next(null);

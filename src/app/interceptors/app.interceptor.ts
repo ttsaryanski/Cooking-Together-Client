@@ -45,7 +45,7 @@ export const appInterceptor: HttpInterceptorFn = (req, next) => {
     return next(clonedReq).pipe(catchError(handleError));
 
     function handleError(err: any) {
-        if (err.status === 401 && err.error?.message === "Invalid token!") {
+        if (err.status === 401 && err.error?.message === "Missing token!") {
             // router.navigate(['/home']);
         } else if (err.status === 404) {
             errorMsgService.setError(err);
